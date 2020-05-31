@@ -2,7 +2,7 @@
 
     $to = "samratsahoo2013@gmail.com";
     $from = $_POST['email'];
-	$from2 = "contact@samratsahoo.com"];
+	$from2 = "contact@samratsahoo.com";
     $name = $_POST['name'];
     $subject = $_POST['subject'];
     $number = $_POST['number'];
