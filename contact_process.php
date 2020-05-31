@@ -2,14 +2,15 @@
 
     $to = "samratsahoo2013@gmail.com";
     $from = $_POST['email'];
+	$from2 = "contact@samratsahoo.com"];
     $name = $_POST['name'];
     $subject = $_POST['subject'];
     $number = $_POST['number'];
     $cmessage = $_POST['message'];
 
-    $headers = "From: $from";
-	$headers = "From: " . $from . "\r\n";
-	$headers .= "Reply-To: ". $from . "\r\n";
+    $headers = "From: $from2";
+	$headers = "From: " . $from2 . "\r\n";
+	$headers .= "Reply-To: ". $from2 . "\r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 
