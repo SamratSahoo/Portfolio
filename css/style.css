@@ -3004,6 +3004,15 @@ h6 {
   margin-top: 60px; }
   .copy_right_text p a {
     color: #766dff; }
+	
+.image-bottom{
+	height: 300px !important;
+}
+
+.embed-right{
+	float: left !important;
+	padding: 5px !important;
+}
 
 /* End Footer Area css
 ============================================================================================ */
