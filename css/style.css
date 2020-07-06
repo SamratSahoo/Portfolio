@@ -3008,7 +3008,7 @@ h6 {
 .image-bottom{
 	height: 300px !important;
 }
-
+@media only screen and (min-width: 775px) {
 .float-container {
     border: 3px solid #fff;
    
@@ -3019,7 +3019,7 @@ h6 {
     float: left;
     padding: 10px;
 }  
-
+}
 
 /* End Footer Area css
 ============================================================================================ */
