@@ -1,6 +1,6 @@
 <template>
   <div class="container" :style="cssVars">
-    <img class="" :src="imageSource" :height="imageHeight" />
+    <img class="image" :src="imageSource" />
     <h2 class="subtitle-text">{{ subtitle }}</h2>
   </div>
 </template>
@@ -8,7 +8,7 @@
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
-  name: 'SmallCard',
+  name: 'TechnologyCard',
   props: {
     imageSource: {
       type: String,
@@ -21,31 +21,31 @@ export default Vue.extend({
       required: false,
     },
     width: {
-      type: Number,
-      default: 200,
+      type: String,
+      default: '200px',
       required: false,
     },
     height: {
-      type: Number,
-      default: 200,
+      type: String,
+      default: '200px',
       required: false,
     },
   },
   computed: {
     cssVars() {
       return {
-        '--box-width': this.width + 'px',
-        '--box-height': this.height + 'px',
+        '--box-width': this.width,
+        '--box-height': this.height,
       }
-    },
-    imageHeight() {
-      return 0.7 * this.height
     },
   },
 })
 </script>
 
 <style scoped>
+.image {
+  height: calc(0.7 * var(--box-height));
+}
 .container {
   display: flex;
   flex-direction: column;
@@ -61,6 +61,23 @@ export default Vue.extend({
   border: #432371 solid 3px;
 }
 
+@media screen and (max-width: 500px) {
+  .container {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    align-items: center;
+    font-family: 'Outfit';
+    font-weight: normal;
+    border-radius: 10px;
+    padding: 10px;
+    background-color: white;
+    text-align: center;
+    width: var(--box-width);
+    height: var(--box-height);
+    border: #432371 solid 3px;
+  }
+}
 .subtitle-text {
   font-family: 'Outfit';
   font-weight: normal;

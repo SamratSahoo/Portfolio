@@ -17,6 +17,9 @@
     "*.{js,ts,vue}": "eslint --cache",
     "*.**": "prettier --check --ignore-unknown"
   },
+  "engines": {
+    "node": "16.x"
+  },
   "dependencies": {
     "core-js": "^3.25.3",
     "nuxt": "^2.15.8",
