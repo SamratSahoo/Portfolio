@@ -1,5 +1,5 @@
 import CareerModel from '../models/Career'
-import { dbConnect } from 'server/utils/dbConnect'
+import { dbConnect } from '../utils/dbConnect'
 
 export async function createCareer(
   companyName: string,

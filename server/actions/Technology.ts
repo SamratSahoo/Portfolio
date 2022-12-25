@@ -1,5 +1,5 @@
 import TechnologyModel from '../models/Technology'
-import { dbConnect } from 'server/utils/dbConnect'
+import { dbConnect } from '../utils/dbConnect'
 
 export async function createTechnology(
   technologyName: string,
