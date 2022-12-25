@@ -25,6 +25,7 @@
     "@pinia/nuxt": "^0.4.6",
     "core-js": "^3.25.3",
     "jsonwebtoken": "^9.0.0",
+    "mongoose": "^6.8.1",
     "nuxt-edge": "latest",
     "pinia": "^2.0.28",
     "vue": "^2.7.10",
