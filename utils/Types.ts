@@ -1,5 +1,8 @@
 import { Types } from 'mongoose'
 
+export enum ErrorTypes {
+  EXPIRED_ACCESS_TOKEN = 'This access token is expired',
+}
 export interface User {
   email: string
   hashedPassword: string

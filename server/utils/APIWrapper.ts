@@ -1,5 +1,6 @@
 import mongoose from 'mongoose'
-import { HttpMethod } from '../../utils/Types'
+import jwt from 'jsonwebtoken'
+import { ErrorTypes, HttpMethod } from '../../utils/Types'
 import { getUser } from './Authentication'
 
 interface RouteConfig {
@@ -38,8 +39,24 @@ function APIWrapper(
     try {
       // Handle user access token + roles restrictions
       if (config?.requireToken) {
-        const user = await getUser(req.headers.accesstoken as string)
+        jwt.verify(
+          req.headers.accesstoken,
+          process.env.APP_SECRET,
+          (error: Error) => {
+            if (error.message.includes('jwt expired')) {
+              throw createError({
+                statusCode: 401,
+                statusMessage: ErrorTypes.EXPIRED_ACCESS_TOKEN,
+                data: {
+                  success: false,
+                  message: ErrorTypes.EXPIRED_ACCESS_TOKEN,
+                },
+              })
+            }
+          }
+        )
 
+        const user = await getUser(req.headers.accesstoken as string)
         if (!user) {
           throw createError({
             statusCode: 400,

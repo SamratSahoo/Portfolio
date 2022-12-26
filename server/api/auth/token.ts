@@ -14,16 +14,15 @@ export default APIWrapper({
       const password = requestBody.password
       const user: User = (await getUserByEmail(email)) as User
 
+      if (!user) {
+        throw new Error('User with email does not exist')
+      }
       const comparison = await comparePassword(user.hashedPassword, password)
       if (!comparison) {
         throw new Error("User's email or password is incorrect")
       }
 
-      return {
-        webToken: getWebToken({
-          email,
-        }),
-      }
+      return getWebToken({ email })
     },
   },
 })

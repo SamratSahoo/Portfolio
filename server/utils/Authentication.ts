@@ -27,7 +27,7 @@ export const getWebToken = (data: Record<string, string | boolean>) => {
   const secrets = useRuntimeConfig()
   data.authorized = true
   return jwt.sign(data, secrets.appSecret as string, {
-    expiresIn: '1h',
+    expiresIn: '15m',
   })
 }
 

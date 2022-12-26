@@ -3,7 +3,7 @@ import APIWrapper from '../utils/APIWrapper'
 export default APIWrapper({
   GET: {
     config: {
-      requireToken: false,
+      requireToken: true,
     },
     handler: () => {
       return {

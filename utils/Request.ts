@@ -1,4 +1,4 @@
-import { InternalRequestData, InternalResponseData } from './Types'
+import { ErrorTypes, InternalRequestData, InternalResponseData } from './Types'
 import { useAuthTokenStore } from '~/stores/authToken'
 
 export async function internalRequest<T>({
@@ -8,9 +8,11 @@ export async function internalRequest<T>({
   body,
 }: InternalRequestData): Promise<T> {
   const authStore = useAuthTokenStore()
+  if (authStore.authToken) {
+    authStore.refreshToken()
+  }
   const requestInfo: RequestInit = {
     method,
-    mode: 'cors',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
@@ -31,6 +33,7 @@ export async function internalRequest<T>({
         return null
       })
   }
+
   const response = await fetch(url, requestInfo)
   const responseBody = (await response.json()) as InternalResponseData<T>
 
@@ -38,6 +41,13 @@ export async function internalRequest<T>({
     throw new Error('Unable to connect to API.')
   } else if (!responseBody.success) {
     const errorMessage = responseBody.message
+
+    // Refresh auth token logic
+    if ((errorMessage as ErrorTypes) === ErrorTypes.EXPIRED_ACCESS_TOKEN) {
+      await authStore.refreshToken()
+      return internalRequest({ url, queryParams, method, body })
+    }
+
     throw new Error(errorMessage)
   }
 
