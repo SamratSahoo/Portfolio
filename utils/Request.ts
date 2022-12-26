@@ -13,6 +13,7 @@ export async function internalRequest<T>({
   }
   const requestInfo: RequestInit = {
     method,
+    mode: 'cors',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',

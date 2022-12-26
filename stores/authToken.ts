@@ -28,6 +28,7 @@ export const useAuthTokenStore = defineStore('authToken', {
           email: this.email,
           password: this.password,
         }),
+        mode: 'cors',
         credentials: 'include',
         headers: {
           'Content-Type': 'application/json',
