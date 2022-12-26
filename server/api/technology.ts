@@ -1,6 +1,15 @@
 import { getAllTechnologies } from '../actions/Technology'
 
-export default defineEventHandler(async () => {
-  const technologies = await getAllTechnologies()
-  return { technologies }
+import APIWrapper from '../utils/APIWrapper'
+
+export default APIWrapper({
+  GET: {
+    config: {
+      requireToken: false,
+    },
+    handler: async () => {
+      const technologies = await getAllTechnologies()
+      return technologies
+    },
+  },
 })

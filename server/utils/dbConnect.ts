@@ -1,6 +1,7 @@
 import mongoose from 'mongoose'
 
 export async function dbConnect(): Promise<void> {
+  mongoose.set('strictQuery', false)
   if (mongoose.connections[0].readyState) return
 
   await mongoose

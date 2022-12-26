@@ -1,5 +1,3 @@
-import { getAllCareers } from '../actions/Career'
-
 import APIWrapper from '../utils/APIWrapper'
 
 export default APIWrapper({
@@ -7,9 +5,11 @@ export default APIWrapper({
     config: {
       requireToken: false,
     },
-    handler: async () => {
-      const careers = await getAllCareers()
-      return careers
+    handler: () => {
+      return {
+        Hello: 'World',
+        Version: 2.0,
+      }
     },
   },
 })

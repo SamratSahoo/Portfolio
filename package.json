@@ -23,7 +23,9 @@
   "dependencies": {
     "@nuxt/devalue": "^2.0.0",
     "@pinia/nuxt": "^0.4.6",
+    "bcrypt": "^5.1.0",
     "core-js": "^3.25.3",
+    "cors": "^2.8.5",
     "jsonwebtoken": "^9.0.0",
     "mongoose": "^6.8.1",
     "nuxt-edge": "latest",
@@ -39,6 +41,7 @@
     "@nuxt/typescript-build": "^2.1.0",
     "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@nuxtjs/eslint-module": "^3.1.0",
+    "@types/cors": "^2.8.13",
     "eslint": "^8.24.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-nuxt": "^4.0.0",
