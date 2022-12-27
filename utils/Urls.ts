@@ -1,8 +1,5 @@
 function getBaseURL() {
-  if (process.env.ENVIRONMENT === 'production') {
-    return `portfolio-samratsahoo.vercel.app`
-  }
-  return 'http://localhost:3000'
+  return 'https://portfolio-samratsahoo.vercel.app'
 }
 
 export const urls = {
