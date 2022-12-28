@@ -7,13 +7,16 @@ export const useAuthTokenStore = defineStore('authToken', {
     return {
       email: '',
       password: '',
-      authToken: '',
+      authToken: localStorage.getItem('accessToken')
+        ? localStorage.getItem('accessToken')
+        : '',
     }
   },
 
   actions: {
     setAuthToken(newAuthToken: string) {
       this.authToken = newAuthToken
+      localStorage.setItem('accessToken', newAuthToken)
     },
     setEmail(email: string) {
       this.email = email
@@ -37,6 +40,7 @@ export const useAuthTokenStore = defineStore('authToken', {
 
       const jsonResponse = await response.json()
       this.authToken = jsonResponse.payload
+      localStorage.setItem('accessToken', jsonResponse.payload)
     },
   },
 })

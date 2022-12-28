@@ -13,16 +13,29 @@
       </div>
     </div>
 
-    <div v-if="authStore.authToken === ''" class="authenticated-box"></div>
+    <div v-if="authStore.authToken !== ''" class="authenticated-box">
+      <div class="side-menu-box">
+        <SideBar :sidebar-elements="['Technology Section', 'Career Section']" />
+      </div>
+      <div class="main-content-box">
+        <TechnologyEditor />
+      </div>
+    </div>
   </div>
 </template>
 <script>
 import Vue from 'vue'
 import { useAuthTokenStore } from '@/stores/authToken'
 import { getAuthToken } from '@/actions/User'
+import SideBar from '~/components/SideBar.vue'
+import TechnologyEditor from '~/components/TechnologyEditor.vue'
 
 export default Vue.extend({
   name: 'Admin',
+  components: {
+    SideBar,
+    TechnologyEditor,
+  },
   data() {
     return {
       authStore: useAuthTokenStore(),
@@ -39,7 +52,6 @@ export default Vue.extend({
         this.authStore.setPassword(this.password)
         const token = await getAuthToken(this.email, this.password)
         this.authStore.setAuthToken(token)
-        this.authStore.refreshToken()
       } catch (e) {
         this.error = 'Failed to Login to Admin Portal'
       }
@@ -48,10 +60,6 @@ export default Vue.extend({
 })
 </script>
 <style scoped>
-.authenticated-box {
-  display: flex;
-  flex-direction: column;
-}
 .login-fail {
   font-family: 'Outfit';
   font-weight: 400;
@@ -108,5 +116,23 @@ export default Vue.extend({
   font-family: 'Outfit';
   font-weight: 400;
   font-size: 1.1em;
+}
+
+.authenticated-box {
+  display: flex;
+  flex-direction: row;
+}
+.side-menu-box {
+  flex: 1;
+}
+
+.main-content-box {
+  flex: 5;
+}
+
+@media screen and (max-width: 768px) {
+  .side-menu-box {
+    flex: 3;
+  }
 }
 </style>
