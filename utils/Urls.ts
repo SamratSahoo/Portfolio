@@ -1,6 +1,6 @@
 function getBaseURL() {
-  // return 'https://portfolio-samratsahoo.vercel.app'
-  return `http://localhost:3000`
+  return 'https://portfolio-samratsahoo.vercel.app'
+  // return `http://localhost:3000`
 }
 
 export const urls = {
