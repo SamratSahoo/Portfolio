@@ -8,9 +8,6 @@ export async function internalRequest<T>({
   body,
 }: InternalRequestData): Promise<T> {
   const authStore = useAuthTokenStore()
-  if (authStore.authToken) {
-    authStore.refreshToken()
-  }
   const requestInfo: RequestInit = {
     method,
     mode: 'cors',
@@ -18,7 +15,7 @@ export async function internalRequest<T>({
     headers: {
       'Content-Type': 'application/json',
       accesstoken: authStore.authToken,
-    },
+    } as HeadersInit,
   }
 
   if (body) {

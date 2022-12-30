@@ -7,3 +7,11 @@ body {
   background-color: #f5ecf9;
   margin: 0;
 }
+
+input[type='text'] {
+  font-family: 'Outfit';
+}
+
+.vm--modal {
+  height: auto !important;
+}

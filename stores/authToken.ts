@@ -5,8 +5,10 @@ import { urls } from '~/utils/Urls'
 export const useAuthTokenStore = defineStore('authToken', {
   state: () => {
     return {
-      email: '',
-      password: '',
+      email: localStorage.getItem('email') ? localStorage.getItem('email') : '',
+      password: localStorage.getItem('password')
+        ? localStorage.getItem('password')
+        : '',
       authToken: localStorage.getItem('accessToken')
         ? localStorage.getItem('accessToken')
         : '',
@@ -20,9 +22,11 @@ export const useAuthTokenStore = defineStore('authToken', {
     },
     setEmail(email: string) {
       this.email = email
+      localStorage.setItem('email', email)
     },
     setPassword(password: string) {
       this.password = password
+      localStorage.setItem('password', password)
     },
     async refreshToken() {
       const response = await fetch(urls.baseUrl + urls.api.auth.token, {

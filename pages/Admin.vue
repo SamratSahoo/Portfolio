@@ -1,6 +1,6 @@
 <template>
   <div class="container">
-    <div v-if="authStore.authToken === ''" class="login-box">
+    <div v-if="!authStore.authToken" class="login-box">
       <label class="login-label">Email</label>
       <input v-model="email" class="credentials-input" type="text" />
       <label class="login-label">Password</label>
@@ -13,7 +13,7 @@
       </div>
     </div>
 
-    <div v-if="authStore.authToken !== ''" class="authenticated-box">
+    <div v-if="authStore.authToken" class="authenticated-box">
       <div class="side-menu-box">
         <SideBar :sidebar-elements="['Technology Section', 'Career Section']" />
       </div>
