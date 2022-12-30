@@ -10,3 +10,14 @@ export const getAllTechnologies = () => {
     method: HttpMethod.GET,
   })
 }
+
+export const createTechnology = (technologyName: string, imagePath: string) => {
+  return internalRequest<Technology>({
+    url: technologyUrl,
+    method: HttpMethod.POST,
+    body: {
+      technologyName,
+      imagePath,
+    },
+  })
+}

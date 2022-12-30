@@ -10,5 +10,11 @@ export const urls = {
       token: `/api/auth/token`,
     },
     technology: `/api/technology`,
+    files: {
+      init: '/api/files/init',
+      urls: '/api/files/urls',
+      complete: '/api/files/complete',
+      download: '/api/files/download',
+    },
   },
 }

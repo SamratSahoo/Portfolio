@@ -16,10 +16,12 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { getAllTechnologies } from '../actions/Technology'
+import { v4 as uuidv4 } from 'uuid'
+import { getAllTechnologies, createTechnology } from '../actions/Technology'
 import TechnologyCard from './TechnologyCard.vue'
 import AddModal from './AddModal.vue'
-import { Technology } from '~/utils/Types'
+import { StorageLocation, Technology } from '~/utils/Types'
+import { uploadFile } from '~/utils/Storage'
 
 export default Vue.extend({
   name: 'TechnologyEditor',
@@ -39,7 +41,15 @@ export default Vue.extend({
     showPopUp() {
       this.$modal.show('AddModal')
     },
-    addTechnology() {},
+    async addTechnology(entryData: string, imageData: string) {
+      const fileName = uuidv4() + '.jpg'
+      const upload = await uploadFile(
+        fileName,
+        StorageLocation.TECHNOLOGY_CARDS,
+        imageData
+      )
+      await createTechnology(entryData, upload)
+    },
   },
 })
 </script>

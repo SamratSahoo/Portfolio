@@ -27,7 +27,6 @@ function APIWrapper(
       const errorMessage = method
         ? `Request method ${method} is invalid.`
         : 'Missing request method.'
-
       throw createError({
         statusCode: 400,
         statusMessage: errorMessage,
@@ -43,7 +42,7 @@ function APIWrapper(
           req.headers.accesstoken,
           process.env.APP_SECRET,
           (error: Error) => {
-            if (error.message.includes('jwt expired')) {
+            if (error && error.message.includes('jwt expired')) {
               throw createError({
                 statusCode: 401,
                 statusMessage: ErrorTypes.EXPIRED_ACCESS_TOKEN,

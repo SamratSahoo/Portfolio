@@ -9,7 +9,7 @@
       :init="handleFilePondInit"
       credits="false"
       :server="imageProcessServer"
-      :instant-upload="false"
+      :instant-upload="true"
       :allow-revert="true"
       :image-preview-height="height"
     />
@@ -41,7 +41,7 @@ export default {
       required: false,
     },
   },
-  data: function () {
+  data() {
     return {
       /*eslint-disable */
       imageProcessServer: {

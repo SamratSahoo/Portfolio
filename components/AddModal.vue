@@ -33,10 +33,9 @@ export default Vue.extend({
   },
   methods: {
     addCallback() {
-      this.$emit('addCallback', entryData, imageData)
+      this.$emit('addCallback', this.entryData, this.imageData)
     },
-    processImage() {},
-    setImage(imageData) {
+    processImage(imageData) {
       this.imageData = imageData
     },
   },
